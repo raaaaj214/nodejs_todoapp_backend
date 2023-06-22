@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export const database = () => { mongoose.connect("mongodb://127.0.0.1:27017", {
+export const database = () => { mongoose.connect(process.env.MONGO_URI, {
 dbName : "project1"
 }).then(() => {
     console.log("Database is connected")
