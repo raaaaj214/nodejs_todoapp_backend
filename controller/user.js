@@ -51,7 +51,7 @@ export const register = async(req,res) => {
     
     if(User)
     {
-    return  res.status(404).json(
+    return  res.status(200).json(
         {
             success: false,
             message : "User already exist"
@@ -73,7 +73,7 @@ export const login = async(req,res) => {
     const User = await user.findOne({email}).select("+password")
     if(!User)
     {
-        return  res.status(404).json(
+        return  res.status(200).json(
             {
                 success: false,
             message : "Invalid email or password"
@@ -85,7 +85,7 @@ const isMatch = await bcrypt.compare(password,User.password);
 
 if(!isMatch)
 {
-    return  res.status(404).json(
+    return  res.status(200).json(
         {
             success: false,
             message : "Invalid email or password"
