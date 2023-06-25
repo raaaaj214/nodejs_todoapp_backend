@@ -100,6 +100,8 @@ sendCookie(User,req,res,`Welcome Back , ${User.name} !!!`)
 export const logout = async(req,res) => {
 
     await res.cookie("token",null,{
+        sameSite : process.env.NODE_ENV === "dev" ? "lax" : "none",
+        secure : process.env.NODE_ENV === "dev" ? false : true,
         expires : new Date(Date.now())
     })
     res.json({
