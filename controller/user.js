@@ -58,7 +58,7 @@ export const register = async(req,res) => {
         }
         )
     }
-
+    const Name = name || User123
     const hassPassword = await bcrypt.hash(password,12)
     const UserOne = await user.create({name,email,password : hassPassword})
     
